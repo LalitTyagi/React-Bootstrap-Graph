@@ -1,0 +1,39 @@
+{
+  "name": "lalittyagi",
+  "version": "1.0.0",
+  "description": "React Routing step by step",
+  "main": "index.js",
+  "author": "ankit1602",
+  "license": "BatMan",
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack-dev-server",
+    "test": "npm run build && npm run start"
+  },
+  "dependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "chart": "^0.1.2",
+    "chart.js": "^2.6.0",
+    "d3-request": "^1.0.5",
+    "jquery": "^3.2.1",
+    "react-bootstrap": "^0.31.2",
+    "react-chartjs-2": "^2.6.1",
+    "react-dom": "^15.6.1",
+    "webpack": "^3.5.2",
+    "webpack-dev-server": "^2.7.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "webpack": "^3.5.2"
+  }
+}
