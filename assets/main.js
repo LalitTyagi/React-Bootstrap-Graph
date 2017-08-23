@@ -19,7 +19,9 @@ var Main = React.createClass({
 			high:0,
 			low:0,
 			close:0,
-			volume:0
+			volume:0,
+			searchData:[],
+			searchDataPrice:[]
 		}
 	},
 
@@ -53,9 +55,8 @@ var Main = React.createClass({
             		high:priceArr[len-1][2],
 					low:priceArr[len-1][3],
 					close:priceArr[len-1][4],
-					volume:priceArr[len-1][5],
-
-            		           		
+					volume:priceArr[len-1][5], 
+					searchDataPrice:this.state.searchDataPrice.concat(priceArr[len-1][2])          		
             	})
             	// for(var i=0;i<priceArr.length;i++)
             	// {
@@ -73,6 +74,10 @@ var Main = React.createClass({
 	createAjax: function(query){
         //console.log('create Function')
         var query    = this.refs.query.value;
+        
+        this.setState({
+                       searchData:this.state.searchData.concat(query)
+                    })
         //console.log('Query',query)
         var URL      = 'https://www.quandl.com/api/v3/datasets/XNSE/' + query +'.json?api_key=gWf2CLShwrGUBVnqzsT4&start_date=2017-02-23&end_date=2017-08-23';
         //console.log(URL)
@@ -82,6 +87,81 @@ var Main = React.createClass({
 	
 
 	render:function(){
+		//console.log('searchData',this.state.searchData)
+		var search5 = '-';
+		var search4 = '-';
+		var search3 = '-';
+		var search2 = '-';
+		var search1 = '-';
+
+		var searchPrice5 = '-';
+		var searchPrice4 = '-';
+		var searchPrice3 = '-';
+		var searchPrice2 = '-';
+		var searchPrice1 = '-';
+
+		var latestSearch = this.state.searchData;
+		latestSearch=latestSearch.reverse();
+
+		var latestSearchPrice = this.state.searchDataPrice;
+		latestSearchPrice=latestSearchPrice.reverse();
+
+		if(latestSearch.length === 1)
+		{
+			var search5 = latestSearch[0];
+			var searchPrice5 = latestSearchPrice[0];
+		}
+
+		if(latestSearch.length === 2)
+		{
+			var search5 = latestSearch[0];
+			var searchPrice5 = latestSearchPrice[0];
+			var search4 = latestSearch[1];
+			var searchPrice4 = latestSearchPrice[1];
+		}
+
+		if(latestSearch.length === 3)
+		{
+			var search5 = latestSearch[0];
+			var searchPrice5 = latestSearchPrice[0];
+			var search4 = latestSearch[1];
+			var searchPrice4 = latestSearchPrice[1];
+			var search3 = latestSearch[2];
+			var searchPrice3 = latestSearchPrice[2];
+		}
+
+		if(latestSearch.length === 4)
+		{
+			var search5 = latestSearch[0];
+			var searchPrice5 = latestSearchPrice[0];
+			var search4 = latestSearch[1];
+			var searchPrice4 = latestSearchPrice[1];
+			var search3 = latestSearch[2];
+			var searchPrice3 = latestSearchPrice[2];
+			var search2 = latestSearch[3];
+			var searchPrice2 = latestSearchPrice[3];
+		}
+
+		if(latestSearch.length === 5)
+		{
+			var search5 = latestSearch[0];
+			var searchPrice5 = latestSearchPrice[0];
+			var search4 = latestSearch[1];
+			var searchPrice4 = latestSearchPrice[1];
+			var search3 = latestSearch[2];
+			var searchPrice3 = latestSearchPrice[2];
+			var search2 = latestSearch[3];
+			var searchPrice2 = latestSearchPrice[3];
+			var search1 = latestSearch[4];
+			var searchPrice1 = latestSearchPrice[4];
+		}
+
+
+
+		//console.log('searchData',latestSearch)
+		//console.log('searchDataPrice',latestSearchPrice)
+
+		console.log('dataXNSE',this.state.dataXNSE)
 			//console.log('dataXNSE',this.state.dataXNSE.map((value) => (value.symbol)))
 			var openPm = 0;
 			var highPm = 0;
@@ -245,28 +325,28 @@ var Main = React.createClass({
 							      <th>Last Price</th>
 							    </tr>
 							  </thead>
-							    <tbody>
-							      <tr>
-							        <td>AMZ</td>
-							        <td>$1,234 +1.2%</td>
-							      </tr>
-							      <tr>
-							        <td>AMZ</td>
-							        <td>$1,234 +1.2%</td>
-							      </tr>
-							      <tr>
-							        <td>AMZ</td>
-							        <td>$1,234 +1.2%</td>
-							      </tr>
-							      <tr>
-							        <td>AMZ</td>
-							        <td>$1,234 +1.2%</td>
-							      </tr>
-							      <tr>
-							        <td>AMZ</td>
-							        <td>$1,234 +1.2%</td>
-							      </tr>
-							    </tbody>
+							     <tbody>
+								      <tr>
+								        <td>{search5}</td>
+								        <td>{searchPrice5}</td>
+								      </tr>
+								      <tr>
+								        <td>{search4}</td>
+								        <td>{searchPrice4}</td>
+								      </tr>
+								      <tr>
+								        <td>{search3}</td>
+								        <td>{searchPrice3}</td>
+								      </tr>
+								      <tr>
+								        <td>{search2}</td>
+								        <td>{searchPrice2}</td>
+								      </tr>
+								      <tr>
+								        <td>{search1}</td>
+								        <td>{searchPrice1}</td>
+								      </tr>
+								    </tbody>
 							</Table>
 				    	</Row>
 
